@@ -1,0 +1,340 @@
+@font-face {
+    font-family: 'Galter';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Galter'), url('/static/src/fonts/Galter.otf') format('opentype');
+}
+
+:root {
+	color-scheme: light dark;
+    &:has(#dark_theme:checked) {
+        color-scheme: dark;
+    }
+    &:has(#light_theme:checked) {
+        color-scheme: light;
+    }
+
+	--text: light-dark(#000, #FFF);
+    --bg-texture: light-dark(url('/static/src/bg_light.jpg'), url('/static/src/bg_dark.jpg'));
+
+    --red-cherry-light: hsl(353 77% 61%);
+    --red-cherry: hsl(353 80% 50%);
+    --red-cherry-dark: hsl(353 80% 33%);
+    --cherry-light: hsl(353 100% 95%);
+    --cherry: hsl(353 100% 78%);
+    --cherry-dark: hsl(353 100% 14%);
+    --cherry-darkdark: hsl(353 100% 5%);
+    --green-cherry-lightlight: hsl(113 90% 90%);
+    --green-cherry-light: hsl(113 100% 85%);
+    --green-cherry: hsl(113 100% 78%);
+    --green-cherry-dark: hsl(113 90% 10%);
+    --green-cherry-contrast: light-dark(var(--green-cherry-dark), var(--green-cherry));
+    --cherry-contrast-opacity: light-dark(hsl(353 70% 90% / 0.8), hsl(353 35% 5% / 0.8));
+    --cherry-contrast-fg: light-dark(var(--cherry-light), var(--cherry-darkdark));
+    --cherry-contrast-bg: light-dark(var(--cherry-darkdark), var(--cherry-light));
+    --cherry-contrast: light-dark(var(--cherry-darkdark), var(--cherry));
+	--bg: light-dark(hsl(353 40% 93%), hsl(221 28% 5%));
+    --bg-darker: light-dark(hsl(165 10% 73%), hsl(221 20% 8%));
+    --bg-lighter: light-dark(hsl(60 90% 98%), hsl(221 13% 15%));
+    --shadow-light: light-dark(hsl(0 0% 35%), hsl(0 0% 60%));
+	--shadow: light-dark(hsl(0 0% 15%), hsl(0 0% 30%));
+}
+
+/* Utilitários */
+
+.flex {
+	display: flex;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.f14 {font-size: 1.4rem;}
+.f16 {font-size: 1.6rem;}
+.f18 {font-size: 1.8rem;}
+.f20 {font-size: 2rem;}
+.f22 {font-size: 2.2rem;}
+.f24 {font-size: 2.4rem;}
+.f26 {font-size: 2.6rem:}
+.f28 {font-size: 2.8rem;}
+.f30 {font-size: 3rem;}
+.f32 {font-size: 3.2rem;}
+.f34 {font-size: 3.4rem;}
+.f36 {font-size: 3.6rem;}
+.f38 {font-size: 3.8rem;}
+.f40 {font-size: 4rem;}
+.f42 {font-size: 4.2rem;}
+.f44 {font-size: 4.4rem;}
+.f46 {font-size: 4.6rem;}
+.f48 {font-size: 4.8rem;}
+.f50 {font-size: 5rem;}
+.f52 {font-size: 5.2rem;}
+.f54 {font-size: 5.4rem;}
+.f56 {font-size: 5.6rem;}
+.f58 {font-size: 5.8rem;}
+.f60 {font-size: 6rem;}
+
+.w100 {font-weight: 100;}
+.w200 {font-weight: 200;}
+.w300 {font-weight: 300;}
+.w400 {font-weight: 400;}
+.w500 {font-weight: 500;}
+.w600 {font-weight: 600;}
+.w700 {font-weight: 700;}
+.w800 {font-weight: 800;}
+.w900 {font-weight: 900;}
+
+.italic {
+    font-style: italic;
+}
+
+.galter {
+    font-family: "Galter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.nunito {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.iosevka-charon-mono {
+    font-family: "Iosevka Charon Mono", monospace;
+    font-style: normal;
+}
+
+/*elements*/
+
+.logo {
+    background: var(--cherry-contrast-bg);
+    color: var(--cherry-contrast-fg);
+    padding: 1rem 1rem 0.8rem 1rem;
+    border: 1px dashed light-dark(var(--red-cherry-light), var(--red-cherry));
+    box-shadow: inset 1px 1px 3px 1px var(--shadow), inset -1px -1px 3px 1px var(--shadown);
+    text-decoration: none;
+    &:visited {
+        color: var(--cherry-contrast-fg);
+    }
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 3px var(--shadow);
+        text-shadow: 0px 0px 3px var(--cherry);
+    }
+}
+
+.page_link {
+    text-decoration: none;
+    &:visited {
+        color: var(--text);
+    }
+    &:hover {
+        cursor: pointer;
+        color: var(--red-cherry);
+    }
+
+}
+
+.theme-radio {
+    gap: 0.8rem;
+    label {
+        display: flex;
+        text-align: center;
+        padding: 6px;
+        border: solid 2px #000;
+        background: var(--cherry-dark);
+        border-radius: 100%;
+        svg {fill: #000;}
+        &:active {
+            box-shadow: inset 0px 0px 5px 0px #000;
+        }
+        &:hover {
+            cursor: pointer;
+            background: var(--red-cherry-dark);
+        }
+        &:has(#light_theme:checked) {
+            background-color: var(--green-cherry);
+        }
+        &:has(#dark_theme:checked) {
+            background-color: var(--green-cherry);
+        }
+    }
+    input {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+    svg {width: 20px; height: 20px;}
+}
+
+.btn_svg {
+    display: flex;
+    border: none;
+    margin: 0px -17px 0px -10px;
+    padding: 3px;
+    background: none;
+    border-radius: 10px;
+    svg{fill: light-dark(var(--cherry-dark), var(--red-cherry));}
+    &:hover{
+        cursor: pointer;
+        background: light-dark(rgb(256, 256, 256, 0.8), rgb(0, 0, 0, 0.4));
+        svg{fill: light-dark(var(--red-cherry), var(--cherry));}
+    }
+}
+
+.btn_login {
+    display: flex;
+    gap: 5px;
+    background: none;
+    border: none;
+    box-shadow: inset 0 0 0px 1px var(--text);
+    border-radius: 10px;
+    padding: 5% ;
+    margin-right: 10px;
+    background: var(--bg-darker);
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: var(--text);
+    }
+    &:hover {
+        cursor: pointer;
+        color: light-dark(#fff, #000);
+        svg {fill: light-dark(#fff, #000);}
+        background: light-dark(rgb(0, 0, 0, 0.5), rgb(256, 256, 256, 0.5));
+    }
+}
+
+.btn_user {
+    display: flex;
+    gap: 10px;
+    background: none;
+    border: none;
+    border: solid 1px var(--text);
+    border-radius: 10px;
+    padding: 1%;
+    background: var(--bg-darker);
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 60px;
+    }
+    &:hover {
+        cursor: pointer;
+        background: var(--shadow);
+    }
+}
+
+.new_note_container {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    height: 70px;
+    width: 25%;
+    outline: 1px solid var(--text);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+
+    .tooltip {
+        position: absolute;
+        padding: 10px 3px;
+        border-radius: 6px;
+        box-shadow: inset 0 0 0 1px var(--shadow);
+        background: darkslategrey;
+        color: #fff;
+        width: 40%;
+        z-index: 1;
+        top: 30px;
+        left: 105%;
+        opacity: 0;
+        transition: opacity 0.4s;
+        user-select: none;
+        &:hover {
+            cursor: default;
+        }
+    }
+
+    svg {
+        position: relative;
+        fill: var(--text);
+        width: 2.4rem;
+        height: 2.4rem;
+        right: -60px;
+        top: 20px;
+        &:hover {
+            cursor: help;
+        }
+
+        &:hover ~ .tooltip {
+            opacity: 1;
+        }
+    }
+}
+
+.new_note {
+    text-decoration: none;
+    color: #000;
+    margin-left: 15px;
+    background: var(--cherry);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 2px var(--shadow);
+    &:visited {
+        color: #000;
+    }
+    &:hover {
+        color: #fff;
+        background: var(--cherry-dark);
+    }
+}
+
+.new_note_line {
+    width: 25%;
+    border: 1px dashed var(--shadow-light);
+}
+
+/*style geral*/
+
+html {
+    font-size: 62.5%;
+    background-image: url("/static/src/bg-pattern.svg"), var(--bg-texture);
+    background-repeat: repeat, no-repeat;
+    background-size: 330px auto, auto;
+    ::selection {
+        background: light-dark(#000, lightblue);
+        color: light-dark(lightblue, #000);
+    }
+    body {
+        font-size: 1.6rem;
+        font-family: "Nunito", sans-serif;
+	    font-weight: 700;
+        margin: 0;
+        header {
+            padding: 0 5rem;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 2rem;
+            margin: auto;
+            width: 70%;
+            border-radius: 0px 0px 10px 10px;
+            border: solid 2px var(--shadow);
+            border-top: none;
+            background: var(--bg-darker);
+            box-shadow: inset 1px -1px 13px 1px rgb(0, 0, 0, 0.7), inset -1px -1px 13px 1px rgb(0, 0, 0, 0.7);
+            &>div{
+                align-items: center;
+                gap: 2.5rem;
+                margin: 0;
+            }
+        }
+	    @media (width <= 480px) {
+		    padding: 1rem;
+	    }
+    }
+}

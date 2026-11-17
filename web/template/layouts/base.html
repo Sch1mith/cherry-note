@@ -1,0 +1,46 @@
+{{define "base_app"}}
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{{.Title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&
+                    family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+        <link rel="icon" href="static/src/favicon.svg" type="image/svg">
+        <link rel="stylesheet" href="/static/css/global.css">
+        {{if .PageCss}}
+            <link rel="stylesheet" href="/static/css/{{.PageCss}}">
+        {{end}}
+    </head>
+
+    <body>
+        <header class="flex">
+            {{template "header_no_login" .}}
+        </header>
+            {{template "new_note" .}}
+        <main>
+            <div class="column block_1">
+                <h1 class="f58">Organize seus pensamentos <br> Faça anotações com mais agilidade</h1>
+                <p class="f28">Anote, acesse e compartilhe suas ideias e descobertas utilizando <br><a href="" class="markdown">linguagem markdown</a><span class="questionmark">﹖</span></p>
+                <div class="links_conta_cheats">
+                    <a href="" class="f22 crie_conta">Crie sua conta</a><a href="" class="f18 cheats">spread cheats</a>
+                </div>
+            </div>
+        </main>
+        <footer class="column">
+            <div>
+                <h3></h3>
+                <a></a>
+                <a></a>
+                <a></a>
+            </div>
+            <p></p>
+        </footer>
+    </body>
+</html>
+{{end}}
